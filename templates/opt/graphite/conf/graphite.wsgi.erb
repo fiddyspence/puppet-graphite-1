@@ -45,5 +45,3 @@ if whitenoise:
 # Initializing the search index can be very expensive. The import below
 # ensures the index is preloaded before any requests are handed to the
 # process.
-log.info("graphite.wsgi - pid %d - reloading search index" % os.getpid())
-import graphite.metrics.search  # noqa
