@@ -11,7 +11,7 @@ class graphite::params {
   $build_dir = '/usr/local/src/'
 
   $django_tagging_pkg    = 'django-tagging'
-  $django_tagging_ver    = '0.3.1'
+  $django_tagging_ver    = '0.4.3'
   $django_tagging_source = undef
   $twisted_pkg           = 'Twisted'
   $twisted_ver           = '11.1.0'
@@ -20,16 +20,16 @@ class graphite::params {
   $txamqp_ver            = '0.4'
   $txamqp_source         = undef
   $graphite_pkg          = 'graphite-web'
-  $graphite_ver          = '0.9.15'
+  $graphite_ver          = '1.1.1'
   $graphite_source       = undef
   $carbon_pkg            = 'carbon'
-  $carbon_ver            = '0.9.15'
+  $carbon_ver            = '1.1.1'
   $carbon_source         = undef
   $whisper_pkg           = 'whisper'
-  $whisper_ver           = '0.9.15'
+  $whisper_ver           = '1.1.1'
   $whisper_source        = undef
   $django_pkg            = 'Django'
-  $django_ver            = '1.5'
+  $django_ver            = '1.11.8'
   $django_source         = undef
   $django_provider       = 'pip'
   $pip_install_options   = undef
