@@ -36,6 +36,15 @@ WSGISocketPrefix <%= scope.lookupvar('graphite::params::apache_wsgi_socket_prefi
 	# file in this directory that you can safely use, just copy it to graphite.wgsi
 	WSGIScriptAlias / <%= scope.lookupvar('graphite::graphiteweb_conf_dir_REAL') %>/graphite_wsgi.py
 
+	Alias /static/ <%= scope.lookupvar('graphite::graphiteweb_webapp_dir_REAL') %>/content/
+	<Location "/static/">
+			SetHandler None
+<% if scope.lookupvar('graphite::gr_apache_24') %>
+			Options All
+			AllowOverride All
+			Require all granted
+<% end %>
+	</Location>
 	Alias /content/ <%= scope.lookupvar('graphite::graphiteweb_webapp_dir_REAL') %>/content/
 	<Location "/content/">
 			SetHandler None

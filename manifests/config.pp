@@ -98,11 +98,12 @@ class graphite::config inherits graphite::params {
 
   # first init of user db for graphite
   exec { 'Initial django db creation':
-    command     => "${::graphite::gr_python_binary} manage.py syncdb --noinput",
-    cwd         => $graphite_web_managepy_location,
+    command     => '/bin/django-admin.py migrate --settings=graphite.settings --run-syncdb',
+    cwd         => '/opt/graphite/webapp',
     refreshonly => true,
     require     => $syncdb_require,
     subscribe   => Class['graphite::install'],
+    environment => "PYTHONPATH=/opt/graphite/webapp"
   }
 
   if !$::graphite::gr_base_dir_managed_externally {
@@ -129,6 +130,7 @@ class graphite::config inherits graphite::params {
     owner     => $gr_web_user_REAL,
     seltype   => 'httpd_sys_rw_content_t',
     subscribe => Exec['Initial django db creation'],
+    recurse   => true,
   }
 
   # change access permissions for carbon-cache to align with gr_user
