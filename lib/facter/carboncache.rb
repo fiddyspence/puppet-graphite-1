@@ -19,3 +19,9 @@ Facter.add('graphitecacheaddresses') do
     cachenodes.map { |node| { node['Node'] => node['Address'] }}
   end
 end
+Facter.add('graphitecachedestinations') do
+  setcode do
+    cachenodes = Facter.value(:graphitecache)
+    cachenodes.map { |node| { "#{node['Address']}:#{node['ServicePort']}" }}
+  end
+end
